@@ -23,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                checking music is playing or not
                 if(mp.isPlaying()){
-                    play.setImageResource(R.drawable.pause_button);
-
+                    mp.pause();
+                    play.setImageResource(R.drawable.play_button);
                 }else{
-
+                    mp.start();
+                    play.setImageResource(R.drawable.pause_button);
                 }
             }
         });
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                mp.stop();
+                mp.release();
             }
         });
 
